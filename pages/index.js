@@ -4,6 +4,7 @@ import { client } from "../lib/client";
 import { Product, FooterBanner, HeroBanner } from "../components";
 
 const Home = ({ products, bannerData }) => {
+  console.log({ products });
   return (
     <>
       <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
@@ -12,7 +13,9 @@ const Home = ({ products, bannerData }) => {
         <p>speaker There are many variations passages</p>
       </div>
       <div className="products-container">
-        {products?.map((product) => product.name)}
+        {products?.map((product) => (
+          <Product key={product._id} product={product} />
+        ))}
       </div>
       <FooterBanner />
     </>
